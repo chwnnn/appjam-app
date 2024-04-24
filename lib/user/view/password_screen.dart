@@ -4,13 +4,53 @@ import 'package:appjam_app/user/view/login_screen.dart';
 import 'package:appjam_app/user/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 
-class PasswordScreen extends StatelessWidget {
-  const PasswordScreen({super.key});
+Future<void> registerUser(String id, String password, String name, String age, String role) async {
+  // Replace with your actual Node.js API endpoint
+  final response = await http.post(
+    Uri.parse('http://172.16.20.133:3000/auth/signup'),
+    body: {
+      'id': id,
+      'password': password,
+      'role': role,
+      'name': name,
+      'age': age,
+       // Include role in the request body
+    },
+  );
+
+  if (response.statusCode == 200) {
+    print('User registered successfully!');
+    // Navigate to success screen or perform other actions
+  } else {
+    print('Error registering user: ${response.statusCode}');
+    // Handle registration failure
+  }
+}
+
+class PasswordScreen extends StatefulWidget {
+  final String name;
+  final String age;
+  final String role;
+  final String id;
+
+  const PasswordScreen({
+    required this.name,
+    required this.age,
+    required this.role,
+    required this.id,
+    super.key,
+  });
 
   @override
+  State<PasswordScreen> createState() => _PasswordScreenState();
+}
+
+class _PasswordScreenState extends State<PasswordScreen> {
+  final _passwordController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    String name;
 
     return GestureDetector(
       onTap: () {
@@ -29,10 +69,8 @@ class PasswordScreen extends StatelessWidget {
                 ),
                 Text(
                   '마지막!',
-                  style: YeongdeokSea.copyWith(
-                    color: Colors.green,
-                    fontSize: 16
-                  ),
+                  style:
+                      YeongdeokSea.copyWith(color: Colors.green, fontSize: 16),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,9 +121,6 @@ class PasswordScreen extends StatelessWidget {
                 CustomTextFormField(
                   textAlgin: TextAlign.center,
                   hintText: '비밀번호 입력',
-                  onChanged: (String value) {
-                    name = value;
-                  },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 4),
                 Row(
@@ -99,7 +134,18 @@ class PasswordScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
+                      onPressed: ()  async{
+                        final password = _passwordController.text;
+                        if (password.isEmpty) {
+                          return; // Handle empty role input
+                        }
+                        await registerUser(
+                        widget.id,
+                        widget.name,
+                        widget.age,
+                          widget.role,
+                          password,
+                        );
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (_) => LoginScreen(),

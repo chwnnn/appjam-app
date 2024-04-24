@@ -1,0 +1,16 @@
+<svg width="86" height="100" viewBox="0 0 86 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 7448">
+<path id="Rectangle 19" d="M5.5 0H77.5C81.9183 0 85.5 3.58172 85.5 8V92C85.5 96.4183 81.9183 100 77.5 100H5.5V0Z" fill="#BF4028"/>
+<path id="Rectangle 18" d="M4.5 2H76.5C80.9183 2 84.5 5.58172 84.5 10V90C84.5 94.4183 80.9183 98 76.5 98H4.5V2Z" fill="white"/>
+<path id="Rectangle 7" d="M3.5 0H75.5C79.9183 0 83.5 3.58172 83.5 8V92C83.5 96.4183 79.9183 100 75.5 100H3.5V0Z" fill="#FBC241"/>
+<rect id="Rectangle 17" x="15.5" y="14" width="56" height="18" fill="white"/>
+<circle id="Ellipse 93" cx="7.5" cy="19" r="2" fill="#3E4149"/>
+<path id="Line 16" d="M6 19C6 19 0.499999 19 0.499999 22C0.499999 25 3.5 25 3.5 25" stroke="#3E4149"/>
+<circle id="Ellipse 94" cx="7.5" cy="37" r="2" fill="#3E4149"/>
+<path id="Line 17" d="M6 37C6 37 0.499999 37 0.499999 40C0.499999 43 3.5 43 3.5 43" stroke="#3E4149"/>
+<circle id="Ellipse 95" cx="7.5" cy="55" r="2" fill="#3E4149"/>
+<path id="Line 18" d="M6 55C6 55 0.499999 55 0.499999 58C0.499999 61 3.5 61 3.5 61" stroke="#3E4149"/>
+<circle id="Ellipse 96" cx="7.5" cy="75" r="2" fill="#3E4149"/>
+<path id="Line 19" d="M6 75C6 75 0.499999 75 0.499999 78C0.499999 81 3.5 81 3.5 81" stroke="#3E4149"/>
+</g>
+</svg>

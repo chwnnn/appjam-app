@@ -4,8 +4,16 @@ import 'package:appjam_app/user/view/age_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class NameScreen extends StatelessWidget {
+class NameScreen extends StatefulWidget {
+
   const NameScreen({super.key});
+
+  @override
+  State<NameScreen> createState() => _NameScreenState();
+}
+
+class _NameScreenState extends State<NameScreen> {
+  final _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +83,6 @@ class NameScreen extends StatelessWidget {
                 CustomTextFormField(
                   textAlgin: TextAlign.center,
                   hintText: '닉네임 입력',
-                  onChanged: (String value) {
-                    name = value;
-                  },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 3.5),
                 Row(
@@ -92,9 +97,14 @@ class NameScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(
+                        final name = _nameController.text;
+                        if (name.isEmpty) {
+                          return;
+                        }
+                        Navigator.push(
+                          context,
                           MaterialPageRoute(
-                            builder: (_) => AgeScreen(),
+                            builder: (context) => AgeScreen(name: name),
                           ),
                         );
                       },

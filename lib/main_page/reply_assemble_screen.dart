@@ -8,25 +8,28 @@ class ReplyAssembleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          SizedBox(height: 45),
-          Text(
-            '답변을 모아봤어요!',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontFamily: 'Yeongdeok Sea',
-              fontWeight: FontWeight.w400,
-              height: 0.09,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 45),
+            Text(
+              '답변을 모아봤어요!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontFamily: 'Yeongdeok Sea',
+                fontWeight: FontWeight.w400,
+                height: 0.09,
+              ),
             ),
-          ),
-          SizedBox(height: 40),
-          Note(context),
-          Note(context),
-          Note(context),
-        ],
+            SizedBox(height: 40),
+            Note(context),
+            Note(context),
+            Note(context),
+            Note(context),
+          ],
+        ),
       ),
     );
   }
@@ -46,7 +49,7 @@ Widget Note(BuildContext context) {
                 ),
               );
             },
-            child: SvgPicture.asset('asset/imgs/Frame8.svg'),
+            child: SvgPicture.asset('asset/imgs/frame5.svg'),
           ),
           SizedBox(width: 20),
           Column(

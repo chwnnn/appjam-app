@@ -6,12 +6,9 @@ class CustomTextFormField extends StatelessWidget {
   final String? errorText;
   final bool obscureText;
   final bool autofocus;
-  final ValueChanged<String>? onChanged;
   final TextAlign? textAlgin;
 
   const CustomTextFormField({
-
-    required this.onChanged,
     this.obscureText = false,
     this.autofocus = false,
     this.hintText,
@@ -35,7 +32,6 @@ class CustomTextFormField extends StatelessWidget {
       // 비밀번호 입력할 때
       obscureText: obscureText,
       autofocus: autofocus,
-      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: YeongdeokSea.copyWith(

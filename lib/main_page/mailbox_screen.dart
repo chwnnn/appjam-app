@@ -1,4 +1,7 @@
 import 'package:appjam_app/const/text_style.dart';
+import 'package:appjam_app/main_page/calendar_comment_screen.dart';
+import 'package:appjam_app/main_page/memo_screen.dart';
+import 'package:appjam_app/main_page/reply_screen.dart';
 import 'package:flutter/material.dart';
 
 class MailboxScreen extends StatelessWidget {
@@ -48,7 +51,13 @@ class MailboxScreen extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => CalendarCommentScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     '편지 쓰기',
                     style: YeongdeokSea.copyWith(

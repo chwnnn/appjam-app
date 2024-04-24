@@ -4,13 +4,20 @@ import 'package:appjam_app/user/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AgeScreen extends StatelessWidget {
-  const AgeScreen({super.key});
+class AgeScreen extends StatefulWidget {
+  final String name;
+
+  const AgeScreen({required this.name, super.key});
+
+  @override
+  State<AgeScreen> createState() => _AgeScreenState();
+}
+
+class _AgeScreenState extends State<AgeScreen> {
+  final _ageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    String name;
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
@@ -75,9 +82,6 @@ class AgeScreen extends StatelessWidget {
                 CustomTextFormField(
                   textAlgin: TextAlign.center,
                   hintText: '나이 입력',
-                  onChanged: (String value) {
-                    name = value;
-                  },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 3.5),
                 Row(
@@ -92,9 +96,17 @@ class AgeScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(
+                        final age = _ageController.text;
+                        if (age.isEmpty) {
+                          return; // Handle empty ID input
+                        }
+                        Navigator.push(
+                          context,
                           MaterialPageRoute(
-                            builder: (_) => ProfileScreen(),
+                            builder: (context) => ProfileScreen(
+                              name: widget.name,
+                              age: age,
+                            ),
                           ),
                         );
                       },

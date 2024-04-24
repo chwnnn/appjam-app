@@ -6,21 +6,18 @@ import 'package:appjam_app/const/text_style.dart';
 import 'package:appjam_app/user/view/password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:http/http.dart' as http;
-
-Future<void> fetchUserData() async {
-  final response = await http.get(Uri.parse('http://$ip/auth/signup'));
-
-  if (response.statusCode == 200) {
-    final userData = jsonDecode(response.body) as Map<String, dynamic>;
-    print('User Data: $userData');
-  } else {
-    print('Error fetching user data: ${response.statusCode}');
-  }
-}
 
 class IdScreen extends StatefulWidget {
-  const IdScreen({super.key});
+  final String name;
+  final String age;
+  final String role;
+
+  const IdScreen({
+    required this.name,
+    required this.age,
+    required this.role,
+    super.key,
+  });
 
   @override
   State<IdScreen> createState() => _IdScreenState();
@@ -31,7 +28,6 @@ class _IdScreenState extends State<IdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String name;
 
     return GestureDetector(
       onTap: () {
@@ -97,9 +93,6 @@ class _IdScreenState extends State<IdScreen> {
                 CustomTextFormField(
                   textAlgin: TextAlign.center,
                   hintText: '아이디 입력',
-                  onChanged: (String value) {
-                    name = value;
-                  },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 3.5),
                 Row(
@@ -114,9 +107,18 @@ class _IdScreenState extends State<IdScreen> {
                     ),
                     TextButton(
                       onPressed: () {
+                        final id = _idController.text;
+                        if (id.isEmpty) {
+                          return; // Handle empty ID input
+                        }
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => PasswordScreen(),
+                            builder: (_) => PasswordScreen(
+                              name: widget.name,
+                              age: widget.age,
+                              role: widget.role,
+                              id: id,
+                            ),
                           ),
                         );
                       },
